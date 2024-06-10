@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Creatures - JS Data Attributes Example</title>
+
+        <style>
+            
+            div.creature{
+                padding:5px;
+                border:2px solid black;
+                border-radius:10px;
+                max-width:400px;
+                min-height:100px;
+                margin-bottom:5px;
+            } 
+            
+            div.creature img{
+                max-width:200px;
+                max-height: 100px;
+                float:right;
+    
+            }
+
+        </style>
+    </head>   
+    <body>
+    <h1>Creatures</h1>
+    <h3>A JavaScript data attributes example by Khunnarin</h3>
+    <p>This page demonstrates how to use JavaScript data attributes to differentiate data.</p>
+    <p>When you click <b>Show Creature Home</b>, the background color will change color based on their natural environment:
+    </p> 
+    <p>Clear all function will change background color of creatures divs</p>
+    <div>
+        <ul>
+            <li>land: green</li>
+            <li>water: blue</li>
+            <li>air: pink</li>
+        </ul>
+    </div>
+
+    <p>When you click <b>Show Creature Type</b>, the border color and style will changed based on the type of creature:</p>
+    <div> 
+        <ul>
+            <li>animal: solid red</li>
+            <li>insect: dashed orange</li>
+        </ul>
+    </div>
+    <div class="creature" data-home = "land" data-type = "animal">    
+        <img src="monkey.jpg" alt="monkey">
+        <h3>Monkey</h3>
+        <p>Monkeys are cute, but don't try to cuddle them.</p>
+    </div>
+        
+   <div class="creature" data-home = "air" data-type = "animal">    
+        <img src="hummingbird.png" alt="hummingbird">
+        <h3>Hummingbird</h3>
+        <p>Hummingbirds are cute, but don't get in the way of their food.</p>
+    </div>
+        
+    <div class="creature" data-home = "land" data-type = "bug">    
+        <img src="spider.jpg" alt="spider">
+        <h3>Spiders</h3>
+    <p>Spiders are not cute, in fact they creep me out.</p>
+    </div>
+        
+   <div class="creature" data-home = "air" data-type = "animal">    
+        <img src="crow.jpg" alt="crow">
+        <h3>Crow</h3>
+        <p>Crows are not cute, and don't feed them your french fries.</p>
+    </div> 
+        
+        
+    <div class="creature" data-home = "water" data-type = "animal">    
+        <img src="fish.jpg" alt="fish">
+        <h3>Fish</h3>
+        <p>Fish are not cute, but they taste good!</p>
+    </div>
+        
+    <div class="creature" data-home = "air" data-type = "bug">    
+        <img src="stinkbug.jpg" alt="stinkbug">
+        <h3>Stink Bug</h3>
+        <p>Stinkbugs are not cool!  Don't touch them!</p>
+    </div>    
+        
+    <p>
+        <button onclick="showHome()">Show Creature Home</button> 
+        <button onclick="showType()">Show Creature Type</button> 
+        <button onclick="clearAll()">Clear All</button>
+    </p>
+     
+    <script>
+
+        
+        function showHome()
+        {
+            /*
+                loop through all creatures
+                
+                if creature lives on land, background color green
+                if creature lives in water, blue
+                if creature lives in air, yellow
+                
+                */
+        let creatures = document.querySelectorAll('.creature');
+        for (let creature of creatures) {
+            if(creature.getAttribute('data-home')==='land'){
+                creature.style.backgroundColor = 'green';
+            }else if (creature.getAttribute('data-home')==='water'){
+                creature.style.backgroundColor = 'blue';
+            }else if (creature.getAttribute('data-home') === 'air'){
+                creature.style.backgroundColor = 'pink';
+            }
+        }
+            
+        }//end showHome()
+        
+        function showType()
+        {
+            /*
+                loop through all creatures
+                
+                if creature is an animal, border color solid red
+                if creature is an insect, border color is dashed orange
+            */
+            let creatures = document.querySelectorAll('.creature');
+        for (let creature of creatures) {
+            if(creature.getAttribute('data-type')==='animal'){
+                creature.style.border = '2px solid red';
+            }else if (creature.getAttribute('data-type')==='bug'){
+                creature.style.border = '2px dashed orange';
+            }
+        }
+        }//end showType()
+
+        function clearAll()
+        {
+            /*
+                loop through all creatures
+                
+                clear border back to 1px solid black
+                clear background color to white
+                
+            */
+        let creatures = document.querySelectorAll('.creature');
+        for ( let creature of creatures){
+            creature.style.border = '2px solid black';
+            creature.style.backgroundColor = 'teal'
+        }
+        }//end clearAll()
+
+    </script>    
+    </body>
+</html>
